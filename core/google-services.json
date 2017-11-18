@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "985803391913",
+    "firebase_url": "https://madmeetup-daa4c.firebaseio.com",
+    "project_id": "madmeetup-daa4c",
+    "storage_bucket": "madmeetup-daa4c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985803391913:android:c4ef9532df53a20e",
+        "android_client_info": {
+          "package_name": "org.madmeetup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985803391913-f9dbl7uc2jgkhpmj94vm0qg6eji76qaj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCbTODYkJ8aZ6tiROBLtyU8whhq5rP2GM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985803391913:android:54fc8d27c54d8176",
+        "android_client_info": {
+          "package_name": "org.madmeetup.core"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985803391913-f9dbl7uc2jgkhpmj94vm0qg6eji76qaj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCbTODYkJ8aZ6tiROBLtyU8whhq5rP2GM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

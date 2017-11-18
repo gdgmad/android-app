@@ -1,0 +1,95 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+
+    flavorDimensions "default"
+
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    if(project.hasProperty('devBuild')) {
+        aaptOptions.cruncherEnabled = false
+    }
+
+    defaultConfig {
+        applicationId "org.madmeetup"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        resConfigs "en"
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+    buildTypes {
+
+        debug {
+            ext.alwaysUpdateBuildId = false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), '../proguard-project.txt'
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), '../proguard-project.txt'
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+
+    productFlavors {
+        development {
+            dimension "default"
+            minSdkVersion rootProject.minSdkVersion
+            resConfigs ("en", "xhdpi")
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation "com.firebaseui:firebase-ui-auth:$rootProject.firebaseUI"
+    implementation "com.android.support:appcompat-v7:$appCompatVersion"
+    implementation "com.android.support:design:$designSupportVersion"
+
+    kapt "com.android.databinding:compiler:$databinding"
+
+    implementation "com.google.dagger:dagger:$dagger"
+    kapt "com.google.dagger:dagger-compiler:$dagger"
+
+    implementation "android.arch.lifecycle:extensions:$archext"
+
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanary"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary"
+    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary"
+
+    kapt "android.arch.lifecycle:compiler:$archcomp"
+
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+    testImplementation "junit:junit:$junit"
+    api project(path: ':core')
+}
+
+repositories {
+    mavenCentral()
+}

@@ -1,0 +1,62 @@
+-keep public class * implements butterknife.Unbinder { public <init>(**, android.view.View); }
+
+# Prevent obfuscation of types which use ButterKnife annotations since the simple name
+# is used to reflectively look up the generated ViewBinding.
+-keep class butterknife.*
+-keepclasseswithmembernames class * { @butterknife.* <methods>; }
+-keepclasseswithmembernames class * { @butterknife.* <fields>; }
+-keep class **$$ViewBinder { *; }
+
+-keep class com.mobsandgeeks.saripaar.** {*;}
+-dontwarn com.squareup.okhttp.**
+
+-dontwarn retrofit.**
+ -keep class retrofit.** { *; }
+ -dontwarn sun.misc.Unsafe
+ -dontwarn com.octo.android.robospice.retrofit.RetrofitJackson**
+ -dontwarn retrofit.appengine.UrlFetchClient
+ -keepattributes Signature
+ -keepattributes Exceptions
+ -keepclasseswithmembers class * {
+     @retrofit.http.* <methods>;
+ }
+ -keep class com.google.gson.** { *; }
+ -keep class com.google.inject.** { *; }
+ -keep class org.apache.http.** { *; }
+ -keep class org.apache.james.mime4j.** { *; }
+ -keep class javax.inject.** { *; }
+ -keep class retrofit.** { *; }
+ -dontwarn org.apache.http.**
+ -dontwarn android.net.http.AndroidHttpClient
+ -dontwarn retrofit.**
+
+ -dontwarn sun.misc.**
+
+ -keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+    long producerIndex;
+    long consumerIndex;
+ }
+
+ -keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    long producerNode;
+    long consumerNode;
+ }
+
+ # GSON Library
+ # For using GSON @Expose annotation
+ -keepattributes *Annotation*
+
+ # Gson specific classes
+ -keep class sun.misc.Unsafe { *; }
+
+ -dontwarn java.lang.invoke.*
+ -dontwarn com.fernandocejas.**
+ -dontwarn okio.**
+ -dontnote retrofit2.Platform
+ # Platform used when running on RoboVM on iOS. Will not be used at runtime.
+ -dontnote retrofit2.Platform$IOS$MainThreadExecutor
+ # Platform used when running on Java 8 VMs. Will not be used at runtime.
+ -dontwarn retrofit2.Platform$Java8
+ -dontwarn retrofit2.adapter.rxjava.CompletableHelper$CompletableCallAdapter
+ -dontwarn retrofit2.adapter.rxjava.CompletableHelper$CompletableCallOnSubscribe
+ -dontwarn retrofit2.adapter.rxjava.CompletableHelper$CompletableCallOnSubscribe$1
